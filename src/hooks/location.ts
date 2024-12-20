@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useState } from "react"
 import { z } from "zod"
 
-const schema = z.object({
-  iss_position: z.object({
-    latitude: z.string(),
-    longitude: z.string()
+export const schema = z.object({
+  position: z.object({
+    latitude: z.number(),
+    longitude: z.number(),
+    velocity: z.number(),
+    period: z.number()
   }),
   message: z.string(),
   timestamp: z.number()
@@ -17,9 +19,7 @@ type Options = {
   interval?: number
 }
 
-export const useLocation = (
-  { interval = 10000 }: Options = { }
-) => {
+export const useLocation = ({ interval = 10000 }: Options = {}) => {
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState<ISSLocation | null>(null)
   const [error, setError] = useState<Error | null>(null)

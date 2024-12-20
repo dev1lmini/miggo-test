@@ -8,7 +8,7 @@ import sateliteIcon from "./assets/satelite.svg"
 import "leaflet/dist/leaflet.css"
 
 type Props = {
-  position?: ISSLocation["iss_position"]
+  position?: ISSLocation['position']
 }
 
 const icon = L.icon({
